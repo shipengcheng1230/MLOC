@@ -1,0 +1,27 @@
+Cluster default depth:   10.0
+Median of input file depths:   10.0
+ STA   NETWORK    PHASE    READ  DELTA AZIM  RAY     WGT   STA  P RESIDUALS FOR ITERATION #                                                                          
+ CODE                       ERR             PARAM         CORR  *INP*   *0*    *1*    *2*    *3*    *4*          DTMPH  DTMPC    ECI AUTHOR   CHA PHASE0     MNF IDIF
+
+ CLUSTER EVENT   1           19680729.0245.44                   GOOD DATA      Depth =  10.0, fixed, from cluster default depth                                      
+ LF3              pwP      1.00  64.63   31   6.5   0.63  0.14   6.5   6.52   6.45   6.48                       0.0000 0.0000   0.00 ISC          pwP         32    0
+
+ CLUSTER EVENT   2           19690806.1715.39                   GOOD DATA      Depth =  10.0, fixed, from cluster default depth                                      
+ JAS              pwP      1.00  52.03   28   7.5   0.36  0.07   6.7   6.68   6.85   6.88                       0.0000 0.0000   0.00 ISC          pwP         15    0
+
+ CLUSTER EVENT   3           19730119.0736.32                   GOOD DATA      Depth =  10.0, fixed, from cluster default depth                                      
+ UBO              pwP      1.00  59.37   34   6.9   1.00  0.26   0.3   0.26  -0.03   0.00                       0.0000 0.0000   0.00 ISC          pwP         32    0
+ TUL              pwP      1.00  65.44   45   6.5   1.00  0.04  -1.5  -1.48  -2.30  -2.29                       0.0000 0.0000   0.00 ISC          pwP         36    0
+
+ CLUSTER EVENT   4           19730119.1526.27                   GOOD DATA      Depth =  10.0, fixed, from cluster default depth                                      
+ EUR              pP-P     1.00  55.39   30   7.2   0.89  0.35  -0.2   2.00   2.00   2.00                       0.0000 0.0000   0.00 ISC          pP          23    0
+ UBO              sP-P     1.50  59.37   34   6.9   0.88  0.26  -0.3   3.27   3.27   3.27                       0.0000 0.0000   0.00 ISC          sP          26    0
+ COL              pP-P     1.00  72.06    0   6.0   0.33  0.05  -0.6   4.72   4.72   4.72                       0.0000 0.0000   0.00 ISC          pP          34    0
+
+ CLUSTER EVENT   1           19680729.0245.44                   BAD DATA       Depth =  10.0, from cluster default depth                                             
+
+ CLUSTER EVENT   2           19690806.1715.39                   BAD DATA       Depth =  10.0, from cluster default depth                                             
+
+ CLUSTER EVENT   3           19730119.0736.32                   BAD DATA       Depth =  10.0, from cluster default depth                                             
+
+ CLUSTER EVENT   4           19730119.1526.27                   BAD DATA       Depth =  10.0, from cluster default depth                                             

@@ -1,0 +1,13 @@
+pltt 1 2 4 5 6 7
+dem1 globe
+bdps tables/stn/bdps.dat
+ppri pP
+ppri sP
+dcal on
+phyp off
+hlim 0. 1.0
+clim 0. 180.
+wind 3 4
+frec 1 1 0 1
+freh 1 1 0 1
+depc 16

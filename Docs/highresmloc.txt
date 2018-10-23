@@ -1,0 +1,29 @@
+Instructions for downloading high-resolution topography dataset:
+1) SRTM topography (at 90 m resolution) and ASTER G-DEM topography (at 30 m) in GMT format can be downloaded from: 
+http://topex.ucsd.edu/gmtsar/demgen/
+
+2) In order to make a custom cpt file for each new GMT topography plot, use makecpt as following:
+
+This  example creates a new colour palette called output.cpt, with colours from an input cpt file stretched across the 
+range 0 - 2000 m.
+
+You can use a custom cpt file if you have one already by typing: 
+makecpt -Ccustom.cpt -D -T0/2000 -Z > output.cpt
+
+Or, you can use any of GMT's standard colour palettes (http://www.geos.ed.ac.uk/it/howto/GMT/CPT/palettes.html), 
+e.g. polar (type makecpt or man makecpt to see the list), then type:
+makecpt -Cpolar -D -T0/2000 -Z > output.cpt
+
+Note that you don't need the .cpt suffix if you use a built-in colour table.
+ 
+-T gives you the top and bottom values for the new colour palette file "output.cpt" which is define don the basis of the 
+lower and upper limits of elevations found within the map bounds found by using grdcut and grdinfo
+
+ >>>To do this, use grdcut to trim the DEM to the bounds of the figure, and then grdinfo to find out the maximum and minimum
+elevation values contained within the scene <<<
+
+-D means that background and foreground colours are set to match the top and bottom limits of the new colour palette. 
+(e.g. if your scene contains some elevations above 2000 m, then they will be assigned the colour for 2000 m).
+
+-Z means make a continuous, rather than contoured, colour palette
+

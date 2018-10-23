@@ -1,0 +1,10 @@
+#This file presents the bare minimum of data required by mloc
+F        1.1
+E             
+H   2011/08/23 14 43 57.09         37.1391 -104.7686                   2.9                          
+P   T25A                        2011  8 23 14 44  1.220                                                                  
+P   SDCO                        2011  8 23 14 44 12.600                                                                  
+P   S22A                        2011  8 23 14 44 29.270                                                                  
+P   Q24A                        2011  8 23 14 44 31.740                                                                  
+STOP
+EOF

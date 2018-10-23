@@ -1,0 +1,184 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red69\green60\blue204;
+\red56\green110\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 From: Ed Nissen <enissen@mines.edu>\
+Subject: RE: qeshm topo\
+Date: December 7, 2015 at 10:09:40 AM MST\
+To: Eric Bergman <bergman@seismo.com>\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Hi Eric,\
+\
+try something along these lines (I use GMT 5, with versions 4 and lower there might be a slight deviation from this). This example would create a new colour palette called output.cpt, with colours from an input cpt file called ed_elevation.cpt stretched across the range 0 - 2000 m.\
+\
+makecpt -Ced_elevation.cpt -D -T0/2000 -Z > output.cpt\
+\
+ed_elevation.cpt is a cpt file I made myself for plotting topography (I've attached it) - you can replace this with any custom cpt file, or use one of the built-in colour tables (type makecpt or man makecpt to see the list). If you use a built-in colour table then you don't need the .cpt suffix, e.g. you would type -Cpolar\
+\
+-T gives you the top and bottom values for the new colour palette file "output.cpt" which I define on the basis of the lower and upper limits of elevations found within the map bounds - found using grdcut and grdinfo\
+\
+-D means that background and foreground colours are set to match the top and bottom limits of the new colour palette. (e.g. if your scene contains some elevations above 2000 m, then they will be assigned the colour for 2000 m).\
+\
+-Z means make a continuous, rather than contoured, colour palette\
+\
+Hope this helps\
+\
+Ed\
+\
+\
+\
+\
+\
+________________________________________\
+From: Eric Bergman [bergman@seismo.com]\
+Sent: 06 December 2015 17:48\
+To: Ed Nissen\
+Subject: Re: qeshm topo\
+\
+Hi Ed,\
+\
+I think I understand the process but having an example to go by is always helpful with GMT.\
+\
+Cheers,\
+\
+Eric\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \strokec4 On Dec 6, 2015, at 10:31 AM, Edwin Nissen <enissen@mines.edu> wrote:\
+\
+Hopefully this is easy to follow, but I could help more once I'm at my desktop computer tomorrow morning (e.g. with some example GMT scripts).\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf3 \strokec3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+{{\NeXTGraphic separator.tiff \width6100 \height20
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf2 From: Edwin Nissen <enissen@mines.edu>\
+Subject: Re: qeshm topo\
+Date: December 6, 2015 at 10:31:28 AM MST\
+To: Eric Bergman <bergman@seismo.com>\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Hi Eric,\
+\
+I'm not sure what the difference between the dem.grd and dem_ortho.grd is.\
+\
+I make a custom cpt file for each new GMT topography plot I make, by stretching my preferred color scheme to fit the range of elevation values contained within the bounds of the map. \
+\
+To do this, use grdcut to trim the DEM to the bounds of the figure, and then grdinfo to find out the maximum and minimum elevation values contained within the scene. Finally, use makecpt to make a new colour palette file using those minimum and maximum values. If you use the -Z option in makecpt then it makes continuous palette, rather than a "contoured" one.\
+\
+You can use any of GMT's standard colour palettes ({\field{\*\fldinst{HYPERLINK "http://www.geos.ed.ac.uk/it/howto/GMT/CPT/palettes.html"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 http://www.geos.ed.ac.uk/it/howto/GMT/CPT/palettes.html}}) or a custom scheme like the one you have already.\
+\
+Hopefully this is easy to follow, but I could help more once I'm at my desktop computer tomorrow morning (e.g. with some example GMT scripts).\
+\
+Cheers\
+Ed\
+\
+On 12/6/2015 10:12 AM, Eric Bergman wrote:\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\fs26 \cf4 \strokec4 Hi Ed,\
+\
+I just tried it (SRTM3) and I was able to incorporate the .grd file in my plot. I have a couple questions though:\
+\
+1) I get two DEM files, one called \'93dem.grd\'94 and one called \'93dem_ortho.grd\'94. I used the first one in the attached plot, but I\'92m not sure what is the difference.\
+\
+2) The website supplies a \'93dem_grad.cpt" file but when I use it for the plot, everything is nearly black. It\'92s better with my usual \'93topo.cpt\'94 pallette (attached) but I suspect that is not well-suited to such a high-rez image. I suppose it\'92s hard to come up with a single color pallette that works in all situations, so maybe I need to learn something about custom color pallettes. Do you have any suggestions?\
+\
+Nevertheless this is a big improvement over what I had.\
+\
+Eric\
+\
+\
+\
+\
+\
+> On Dec 6, 2015, at 7:12 AM, Edwin Nissen {\field{\*\fldinst{HYPERLINK "mailto:enissen@mines.edu"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 <enissen@mines.edu>}} wrote:\
+> \
+> Hi Eric,\
+> \
+> you can download SRTM topography at 90 m resolution or ASTER G-DEM topography at 30 m, in GMT format, for areas of your choosing from this website:\
+> \
+> {\field{\*\fldinst{HYPERLINK "http://topex.ucsd.edu/gmtsar/demgen/"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 http://topex.ucsd.edu/gmtsar/demgen/}}\
+> \
+> The G-DEM is finer, but also a little noisier in my experience, so the 90 m SRTM data may look just as nice (and your file sizes will be smaller).\
+> \
+> Cheers,\
+> \
+> Ed\
+> \
+> \
+> \
+> On 12/5/2015 6:27 PM, Eric Bergman wrote:\
+>> Hi Reza,\
+>> \
+>> My standard global topo files for use in mloc do not have very high resolution when making plots for a small cluster like Qeshm. I\'92m sure someone out there has higher-rez topo files for the topography at Qeshm. Do you know? It would be easy (and useful) to modify mloc to tell it to use a special topo file for the baseplot of a cluster when you have access to a high-rez dataset.\
+>> \
+>> I cc\'92d this to Ed because I realized he may well have a topography dataset like this.\
+>> \
+>> Eric\
+>> \
+> \
+> \
+\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf3 \strokec3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+{{\NeXTGraphic separator.tiff \width6100 \height20
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf2 From: Edwin Nissen <enissen@mines.edu>\
+Subject: Re: qeshm topo\
+Date: December 6, 2015 at 7:12:04 AM MST\
+To: Eric Bergman <bergman@seismo.com>, "Dr. Abdolreza Ghods" <aghods@iasbs.ac.ir>\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Hi Eric,\
+\
+you can download SRTM topography at 90 m resolution or ASTER G-DEM topography at 30 m, in GMT format, for areas of your choosing from this website:\
+\
+http://topex.ucsd.edu/gmtsar/demgen/\
+\
+The G-DEM is finer, but also a little noisier in my experience, so the 90 m SRTM data may look just as nice (and your file sizes will be smaller).\
+\
+Cheers,\
+\
+Ed\
+\
+\
+\
+On 12/5/2015 6:27 PM, Eric Bergman wrote:\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \strokec4 Hi Reza,\
+\
+My standard global topo files for use in mloc do not have very high resolution when making plots for a small cluster like Qeshm. I\'92m sure someone out there has higher-rez topo files for the topography at Qeshm. Do you know? It would be easy (and useful) to modify mloc to tell it to use a special topo file for the baseplot of a cluster when you have access to a high-rez dataset.\
+\
+I cc\'92d this to Ed because I realized he may well have a topography dataset like this.\
+\
+Eric\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf3 \strokec3 \
+\
+}

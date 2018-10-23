@@ -1,0 +1,130 @@
+killed 19681008.2250.05.mnf block kill
+killed 19681010.0104.31.mnf block kill
+killed 19681123.0013.37.mnf block kill
+killed 19681228.2023.03.mnf block kill
+killed 19690601.0335.28.mnf block kill
+killed 19690606.1634.52.mnf block kill
+killed 19690606.1753.36.mnf block kill
+killed 19730119.1419.11.mnf block kill
+killed 19730119.1556.24.mnf block kill
+killed 19851123.0956.10.mnf block kill
+killed 19851123.2258.40.mnf block kill
+killed 19851124.0928.23.mnf block kill
+killed 19851124.0929.12.mnf block kill
+killed 19851125.2330.15.mnf block kill
+killed 19851127.1559.25.mnf block kill
+
+Convergence limits
+Hypocentroid:  0.005 (deg),  0.5(km),  0.1 (sec)
+Cluster vectors:  0.5 (km),   0.5(km),  0.1 (sec)
+
+Bogus Depth Phase Stations read from: tables/stn/bdps.dat
+ BJI   Beijing                                              40.0403  116.1750     43.0   1958001           L
+ CD2   Chengdu                                              30.9100  103.7580    628.0   1980275           L
+ CN2   Changchun                                            43.8014  125.4480    230.0   1976289           L
+ GTA   Gaotai                                               39.4106   99.8144   1341.0   1970144           L
+ GYA   Guiyang                                              26.4586  106.6640   1162.0   1976214           L
+ HHC   Hu-ho-hao-te                                         40.8494  111.5640   1169.0   1976209           L
+ HIA   Hailar                                               49.2667  119.7420    610.0   1980071           L
+ KMI   Kunming                                              25.1233  102.7400   1940.0   1957001           L
+ KSH   Kashi                                                39.5167   75.9731   1314.0   1979305           L
+ LSA   Lhasa                                                29.7000   91.1500   3789.0   1972030           L
+ LZH   Lanzhou                                              36.0867  103.8440   1560.0   1970144           L
+ MDJ   Mudanjiang                                           44.6164  129.5920    250.0   1976210           L
+ NJ2   Nanjing                                              32.0517  118.8540     45.0   1979061           L
+ QIZ   Qiongzhong                                           19.0294  109.8430    230.0   1984001           L
+ SSE   Sheshan                                              31.0956  121.1867     15.0   1957001           L
+ WMQ   Urumqi                                               43.8138   87.7049    850.0   1995266            
+ XAN   Xi'an                                                34.0394  108.9214    630.0   1972030           L
+mlocset: event   1  19680729.0245.44  jsa4/19680729.0245.44.mnf
+   read_mnf_13:      0 phases re-identified for iteration 0
+mlocset: event   2  19690806.1715.39  jsa4/19690806.1715.39.mnf
+   read_mnf_13:      1 phases re-identified for iteration 0
+mlocset: event   3  19730119.0736.32  jsa4/19730119.0736.32.mnf
+   read_mnf_13:      1 phases re-identified for iteration 0
+mlocset: event   4  19730119.1526.27  jsa4/19730119.1526.27.mnf
+   read_mnf_13:      3 phases re-identified for iteration 0
+
+Relative depth phases
+   1  27 LF3   pw-P         14.60
+   2  10 JAS   pw-P         14.40
+   3  27 UBO   pw-P          7.80
+   3  31 TUL   pw-P          7.30
+   4  18 EUR   pP-P          5.20
+   4  21 UBO   sP-P          7.70
+   4  29 COL   pP-P          8.00
+
+   7 relative depth phases generated
+
+ Beginning iteration 0...
+iev ndat    ndatdl  ndatpr
+  1   37       6       0
+  2   30      11       5
+  3   29      23       5
+  4   20      21       1
+Average:
+         0.007     0.101     0.000     0.000
+ weighted epicentroid:    -20.817   -19.593     0.245
+      bias correction:      3.821    -1.175     0.044
+ 90% confidence ellipses:
+ Bias-corrected: alpha =   37.2 axes =      7.275    13.282
+       Weighted: alpha =   37.1 axes =      7.331    13.261
+     Correction: alpha =   41.4 axes =      0.527     2.085
+iev        dtim      dlat      dlon      ddep
+  1       0.175     0.119     0.095     0.000
+  2       0.240     0.095     0.106     0.000
+  3       0.726    -0.061    -0.108     0.000
+  4      -1.141    -0.152    -0.093     0.000
+           dtim      dlat      dlon      ddep
+hyp:      0.203    -0.222    -0.167     0.000
+mlocset:      2 phases re-identified for iteration  1
+
+ Beginning iteration 1...
+iev ndat    ndatdl  ndatpr
+  1   37       6       0
+  2   30      11       5
+  3   29      23       5
+  4   21      21       5
+Average:
+         0.000     0.001     0.000     0.000
+ weighted epicentroid:     -1.573    -1.627    -0.020
+      bias correction:      0.064    -0.126    -0.001
+ 90% confidence ellipses:
+ Bias-corrected: alpha =   37.1 axes =      6.938    12.457
+       Weighted: alpha =   36.9 axes =      6.990    12.419
+     Correction: alpha =   40.3 axes =      0.535     2.067
+iev        dtim      dlat      dlon      ddep
+  1       0.025     0.004     0.007     0.000
+  2       0.043    -0.001     0.002     0.000
+  3      -0.008     0.003    -0.001     0.000
+  4      -0.059    -0.005    -0.008     0.000
+           dtim      dlat      dlon      ddep
+hyp:     -0.023    -0.015    -0.014     0.000
+
+ Beginning iteration 2...
+iev ndat    ndatdl  ndatpr
+  1   37       6       0
+  2   30      11       5
+  3   29      23       5
+  4   21      21       5
+Average:
+         0.000     0.000     0.000     0.000
+ weighted epicentroid:     -0.007    -0.009     0.000
+      bias correction:     -0.002    -0.005     0.000
+ 90% confidence ellipses:
+ Bias-corrected: alpha =   37.1 axes =      6.913    12.412
+       Weighted: alpha =   36.9 axes =      6.964    12.373
+     Correction: alpha =   40.3 axes =      0.535     2.064
+iev        dtim      dlat      dlon      ddep
+  1       0.000     0.000     0.000     0.000
+  2       0.000     0.000     0.000     0.000
+  3       0.000     0.000     0.000     0.000
+  4      -0.001     0.000     0.000     0.000
+           dtim      dlat      dlon      ddep
+hyp:      0.000     0.000     0.000     0.000
+
+Basic hypocenter list, uncalibrated or direct calibration:
+  1 1968  7 29  2 45 45.02  -7.3854 -148.3409  10.0 UE05 4.9mb  
+  2 1969  8  6 17 15 39.69  -7.3665 -148.2977  10.0 UE06 5.1mb  
+  3 1973  1 19  7 36 33.21  -7.3282 -148.3493  10.0 UE05 5.0mb  
+  4 1973  1 19 15 26 26.05  -7.3541 -148.3210  10.0 UE06 5.0mb  

@@ -1,0 +1,20 @@
+B   This sample bulletin is composed of two events from Trinidad, Colorado
+F   MNF v1.1
+E             
+H = 2011/08/23 07 58  9.75         37.1605 -104.6841                   5.1       NEIC               
+M =       1.88 NEIC               
+P   T25A               Pg       2011  8 23  7 58 13.490 -2  -0.6 Pg            .        .T25A .  .    HBenz              
+P   SDCO               Pg       2011  8 23  7 58 25.280 -2  -1.3 Pg            .        .SDCO .  .    HBenz              
+P   S22A               Pn       2011  8 23  7 58 42.740 -2   0.9 Pn            .        .S22A .  .    HBenz              
+P   Q24A               Pn       2011  8 23  7 58 42.910 -2   0.6 Pn            .        .Q24A .  .    HBenz              
+STOP
+F   MNF v1.1
+E             
+H = 2011/08/23 08 13  5.40         37.1588 -104.7069                   5.3       NEIC               
+M =       1.81 NEIC               
+P   T25A               Pg       2011  8 23  8 13  9.410 -2  -0.7 Pg            .        .T25A .  .    HBenz              
+P   SDCO               Pg       2011  8 23  8 13 20.890 -2  -1.1 Pg            .        .SDCO .  .    HBenz              
+P   S22A               Pn       2011  8 23  8 13 37.940 -2   0.8 Pn            .        .S22A .  .    HBenz              
+P   Q24A               Pn       2011  8 23  8 13 38.550 -2   0.7 Pn            .        .Q24A .  .    HBenz              
+STOP
+EOF
