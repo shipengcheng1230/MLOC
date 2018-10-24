@@ -16,14 +16,28 @@ Eric has never personally distributed this software community-widely but he is f
 
 ## Setup
 
-First clone this repository to your local:
+Before start, some prerequisites must be met:
+
+```console
+➜  MLOC git:(master) ✗ gmt --version
+5.4.4
+
+➜  MLOC git:(master) ✗ gfortran --version
+GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
+
+First clone this repository to your local:
+
+```zsh
 git clone https://github.com/shipengcheng1230/MLOC.git
 ```
 
 Then download the tables file [here](https://drive.google.com/drive/folders/15Vr0Gi_0WSK73DNHGmBA49EgFkn84YZl?usp=sharing) and put it under `MLOC/mloc_working/tables`. Your directory should looks like:
 
-```Shell
+```console
 ├── Docs
 │   ├── Focal Depth
 │   ├── HD calibration cartoons
@@ -52,7 +66,7 @@ Then download the tables file [here](https://drive.google.com/drive/folders/15Vr
 
 Compile source code and any other utilities, for example using `gfortran`:
 
-```
+```zsh
 cd mloc_gfortran && make && cp ./mloc_g ../mloc_working
 ```
 
@@ -65,7 +79,7 @@ AUTHOR: SPC
 
 Now you shouldn't have problem running the program:
 
-```Shell
+```console
 ➜  mloc_working git:(master) ✗ ./mloc_g 
 
 mloc v10.4.5, release date 9/28/2018                                            
