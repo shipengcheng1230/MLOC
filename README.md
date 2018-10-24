@@ -23,25 +23,17 @@ git clone https://github.com/shipengcheng1230/MLOC.git
 
 Then download the tables file [here](https://drive.google.com/drive/folders/15Vr0Gi_0WSK73DNHGmBA49EgFkn84YZl?usp=sharing) and put it under `MLOC/mloc_working/tables`. Your directory should looks like:
 
-```
+```shell
 ├── Docs
 │   ├── Focal Depth
 │   ├── HD calibration cartoons
-│   │   ├── Direct
-│   │   └── Indirect
-│   │       └── old ones
 │   ├── Hi-Rez topographic datasets.rtfd
 │   └── Papers
 ├── MNF utilities
 │   ├── mnf search
-│   └── to\ mnf
-│       ├── any2mnf
-│       ├── isc_ims2mnf
-│       └── seisan2mnf
+│   └── to mnf
 ├── clusters
 │   └── Tunisia
-│       └── Test
-│           └── Data
 ├── mloc utilities
 │   ├── lres
 │   ├── null_test
@@ -53,29 +45,35 @@ Then download the tables file [here](https://drive.google.com/drive/folders/15Vr
 └── mloc_working
     ├── Utilities
     ├── jsa4
-    │   └── jsa4.1_example_gmt_scripts
     └── tables
-        ├── crust
-        ├── ellipticity
-        ├── faults
-        │   └── iran_faults_ghods
-        ├── gmt
-        │   ├── cpt
-        │   │   └── Examples
-        │   │       └── Qeshm
-        │   └── dem
-        │       ├── ETOPO
-        │       ├── GEBCO
-        │       │   └── gebco_docs
-        │       ├── GINA
-        │       ├── GLOBE
-        │       └── custom
-        ├── kml
-        ├── spread
-        ├── stn
-        │   └── archives
-        │       ├── convert_geog
-        │       └── ere_stn_geog
-        └── tau-p
 ```
 
+`Docs` contains all the related references and manuals. `MNF utilities` contains functionalities for transforming ISC bulletin to `.mnf` format. `mloc utilities` contains functionalities for **MLOC** processing procedures. `mloc_gfortran` and `mloc_intel` contain `makefile` for building `mloc` program from source code listed under `mloc_src`. `mloc_working` will be your primary working directory, in which the `table` has all the geological models used by this program.
+
+Compile source code and any other utilities, for example using `gfortran`:
+
+```
+cd mloc_gfortran && make && cp ./mloc_g ../mloc_working
+```
+
+Modify `mloc.conf` file such that `WORKING_DIR` points to your `mloc_working` directory and `AUTHOR` to your name not exceeding 8 characters (for more configuration see docs):
+
+```
+WORKING_DIR: /Users/spc/Softwares/mloc/mloc_working
+AUTHOR: SPC
+```
+
+Now you shouldn't have problem running the program:
+
+```shell
+➜  mloc_working git:(master) ✗ ./mloc_g 
+
+mloc v10.4.5, release date 9/28/2018                                            
+
+Current program limits: 
+  nevmax =   200
+  nqmax  =  4000
+  ntmax1 = 35000
+
+Enter a basename for this run: 
+```

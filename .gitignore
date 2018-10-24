@@ -1,2 +1,4 @@
 .DS_Store
 mloc_working/tables
+*/mloc_g
+*.o
