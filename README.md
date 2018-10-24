@@ -23,7 +23,7 @@ git clone https://github.com/shipengcheng1230/MLOC.git
 
 Then download the tables file [here](https://drive.google.com/drive/folders/15Vr0Gi_0WSK73DNHGmBA49EgFkn84YZl?usp=sharing) and put it under `MLOC/mloc_working/tables`. Your directory should looks like:
 
-```shell
+```Shell
 ├── Docs
 │   ├── Focal Depth
 │   ├── HD calibration cartoons
@@ -65,7 +65,7 @@ AUTHOR: SPC
 
 Now you shouldn't have problem running the program:
 
-```shell
+```Shell
 ➜  mloc_working git:(master) ✗ ./mloc_g 
 
 mloc v10.4.5, release date 9/28/2018                                            
