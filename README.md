@@ -99,3 +99,17 @@ Enter a basename for this run:
 We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contains all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
 
 ![ISC Search](https://github.com/shipengcheng1230/MLOC/blob/master/RDfigures/ISC_Search.png)
+
+It is also worth mentioning the [International Registry of Seismograph Stations (IR)](http://www.isc.ac.uk/registries/). Currently the update-to-date list is stored in `MLOC/mloc_working/tables/stn/master_stn.dat` which looks like:
+
+```
+# Deployment codes
+# INSN: Iran National Seismograph Network
+# ITSN: Iran Telemetered Seismograph Network
+# Kharkheh: Kharkheh Dam Network, Iran
+# TA: Transportable Array <http://ds.iris.edu/ds/nodes/dmc/earthscope/usarray/#transportable_array>
+#
+034A   27.0647   -98.6833    155      IR       IRIS .TA      .                   Hebbronville, Texas, U.S.A.
+035A   26.9379   -98.1023     29      IR       IRIS .TA      .                   Encino, Texas, U.S.A.
+035Z   26.46300  -98.06831    19      IR       IRIS .TA      .                   Hargill, Texas, U.S.A.
+```
