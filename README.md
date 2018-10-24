@@ -3,7 +3,7 @@
 ![AUR](https://img.shields.io/badge/version-v10.4.5-brightgreen.svg)
 ![AUR](https://img.shields.io/badge/release-10%2F15%2F2018-orange.svg)
 [![AUR](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/quick-guide-gplv3.en.html)
-[![AUR](https://img.shields.io/badge/Docs-latest-7f00ff.svg)](https://github.com/shipengcheng1230/MLOC/tree/master/Docs)
+[![AUR](https://img.shields.io/badge/Docs-latest-48C9B0.svg)](https://github.com/shipengcheng1230/MLOC/tree/master/Docs)
 
 
 ## Introduction
@@ -100,6 +100,24 @@ We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) da
 
 ![ISC Search](https://github.com/shipengcheng1230/MLOC/blob/master/RDfigures/ISC_Search.png)
 
+### 2. Convert to `.mnf` format
+
+### 3. Fulfill command file
+
+### 4. Run the program
+
+### 5. Check the results
+
+### 6. Trim the data
+
+### 7. Second run
+
+### 8. Modify crustal model
+
+
+## Additional Commands
+
+### 1. Stations
 It is also worth mentioning the [International Registry of Seismograph Stations (IR)](http://www.isc.ac.uk/registries/). Currently the update-to-date list is stored in `MLOC/mloc_working/tables/stn/master_stn.dat` which looks like:
 
 ```
@@ -113,3 +131,13 @@ It is also worth mentioning the [International Registry of Seismograph Stations 
 035A   26.9379   -98.1023     29      IR       IRIS .TA      .                   Encino, Texas, U.S.A.
 035Z   26.46300  -98.06831    19      IR       IRIS .TA      .                   Hargill, Texas, U.S.A.
 ```
+
+To supplement your own stations, put them in 
+
+### 2. Indirect calibration
+
+### 3. Phase identification
+
+### 4. More
+
+Use the `help` command within `mloc` program to view more.
