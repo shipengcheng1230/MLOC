@@ -62,9 +62,15 @@ Then download the tables file [here](https://drive.google.com/drive/folders/15Vr
     └── tables
 ```
 
-`Docs` contains all the related references and manuals. `MNF utilities` contains functionalities for transforming ISC bulletin to `.mnf` format. `mloc utilities` contains functionalities for **MLOC** processing procedures. `mloc_gfortran` and `mloc_intel` contain `makefile` for building `mloc` program from source code listed under `mloc_src`. `mloc_working` will be your primary working directory, in which `table` has all the geological models used by this program.
+A brief summary of this program is as below:
+- `Docs` contains all the related references and manuals. 
+- `MNF utilities` contains functionalities for transforming ISC bulletin to `.mnf` format. 
+- `mloc utilities` contains functionalities for **MLOC** processing procedures. 
+- `mloc_gfortran` and `mloc_intel` contain `makefile` for building `mloc` program .
+- `mloc_src` contains the source code.
+- `mloc_working` will be your primary working directory, in which `table` has all the geological models used by this program.
 
-Compile source code and any other utilities, for example using `gfortran`:
+Now compile source code and any other utilities, for example using `gfortran`:
 
 ```Shell
 cd mloc_gfortran && make && cp ./mloc_g ../mloc_working
@@ -77,7 +83,7 @@ WORKING_DIR: /Users/spc/Softwares/mloc/mloc_working
 AUTHOR: SPC
 ```
 
-Now you shouldn't have problem running the program:
+Now it should not have problem running the program:
 
 ```console
 ➜  mloc_working git:(master) ✗ ./mloc_g 
@@ -92,13 +98,50 @@ Current program limits:
 Enter a basename for this run: 
 ```
 
+If you cannot come to this step, please pull up an issue.
+
 ## Quick Start
 
 ### 1. Download Data
 
-We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contains all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
+We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contain all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
 
 ![ISC Search](https://github.com/shipengcheng1230/MLOC/blob/master/RDfigures/ISC_Search.png)
+
+The database contains two type: *Reviewed ISC Bulletin* and *ISC Bulletin* where the first one are those reviewed for correction. For output format we will choose *ISF Bulletin*. *QuakeML* cannot work with **MLOC** for now. Within the search region box, it falls on your own choice to draw the region you prefer. After clicking *Search bulletin*, you will be redirected towards the results page. Copy and paste all the contents and save to your local in which the file looks like:
+
+```
+International Seismological Centre
+ISC: On-Line Bulletin
+Any use of data from the ISC should be cited. The correct format for citations may be found on our citation page.
+
+The ISC Bulletin has been rebuilt for the period 1964-1979. All ISC searches will now return the upgraded set of data for this period. The work on the Rebuild project continues for the period 1980-2010 and will result in further gradual bulletin updates in due time.
+
+Once the search has completed, a compressed KML file will be available to view the results in Google Earth.
+
+Make an event map
+
+Search summary:
+Database: ISC Bulletin
+Search type: Circular search
+Central latitude: 34.1
+Central longtitude: 9.9
+Radius: 200 km
+Start date: 1960-01-01 00:00:00
+End date: 2018-10-19 00:00:00
+Events found: 215
+DATA_TYPE BULLETIN IMS1.0:short
+ISC Bulletin
+Event   876000 Tunisia
+   Date       Time        Err   RMS Latitude Longitude  Smaj  Smin  Az Depth   Err Ndef Nsta Gap  mdist  Mdist Qual   Author      OrigID
+1961/01/21 03:45:25                  35.2500   10.5000                                                             uk BCIS       1901692
+```
+
+For simplicity, you will find a piece of sample data named `test.dat` in `MLOC/clusters/Tunisia/Test/Data` that centered somewhere in Tunisia with radius of 200 km dated from 1960 to 2018. Then, use the utility named `isc_ims2mnf` to obtain a `.mnf` style data:
+
+```console
+
+```
 
 ### 2. Convert to `.mnf` format
 
@@ -140,4 +183,30 @@ To supplement your own stations, put them in
 
 ### 4. More
 
-Use the `help` command within `mloc` program to view more.
+Use the `help` command within `mloc` program to view more:
+
+```Shell
+The commands are:
+  anno
+  bdps bias bloc bptc
+  cal  ccat cfil clim comm corr cptf ctyp cvff cvou cvtt
+  datf dbug dcal dem1 dem2 dep  diff
+  ellp epap eplt even
+  fdhp flag fmap fplt frec freh
+  help hlim
+  inpu
+  kill
+  lat  lgtt lmod long lonr lres
+  mare mdou mech memb
+  nsmd
+  oldr
+  pert phid phyp plot pltt ppri pttt puke
+  radf rdpp rels revi rfil rhdf run 
+  secv shcl skip splt sstn star stat step stop subc
+  taup tfil tikh time tomo tptt tt5e tt5s ttou
+  vect vlog vscr
+  weig wind
+  xsec
+
+  For more information, follow the "help" command with or without a command name
+```
