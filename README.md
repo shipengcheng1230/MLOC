@@ -16,7 +16,7 @@ Eric has never personally distributed this software community-widely but he is f
 
 ## Setup
 
-Before start, some prerequisites must be met:
+Before start, some prerequisites, including [GMT5](http://gmt.soest.hawaii.edu/projects/gmt) and a Fortran compiler, must be met, for instance:
 
 ```console
 ➜  MLOC git:(master) ✗ gmt --version
@@ -31,11 +31,11 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 First clone this repository to your local:
 
-```zsh
+```Shell
 git clone https://github.com/shipengcheng1230/MLOC.git
 ```
 
-Then download the tables file [here](https://drive.google.com/drive/folders/15Vr0Gi_0WSK73DNHGmBA49EgFkn84YZl?usp=sharing) and put it under `MLOC/mloc_working/tables`. Your directory should looks like:
+Then download the tables file [here](https://drive.google.com/drive/folders/15Vr0Gi_0WSK73DNHGmBA49EgFkn84YZl?usp=sharing) and put it under `MLOC/mloc_working/tables`. Your directory should look like this:
 
 ```console
 ├── Docs
@@ -66,11 +66,11 @@ Then download the tables file [here](https://drive.google.com/drive/folders/15Vr
 
 Compile source code and any other utilities, for example using `gfortran`:
 
-```zsh
+```Shell
 cd mloc_gfortran && make && cp ./mloc_g ../mloc_working
 ```
 
-Modify `mloc.conf` file such that `WORKING_DIR` points to your `mloc_working` directory and `AUTHOR` to your name not exceeding 8 characters (for more configuration see docs):
+Modify `mloc.conf` such that `WORKING_DIR` points to your `mloc_working` directory and `AUTHOR` to your name not exceeding 8 characters (for more configuration see docs):
 
 ```
 WORKING_DIR: /Users/spc/Softwares/mloc/mloc_working
