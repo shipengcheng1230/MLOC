@@ -8,11 +8,11 @@
 
 ## Introduction
 
-**MLOC** is a multiple-events relocation program developed and maintained by [Eric Bergman](https://www.researchgate.net/profile/Eric_Bergman2) since 1990 whose underlying idea is based on [Jordan and Sverdrup (1981)](https://pubs.geoscienceworld.org/ssa/bssa/article-abstract/71/4/1105/102070/teleseismic-location-techniques-and-their). This tutorial is a skeleton iteration based on the **MLOC** Training Workshop organized by Eric and [Ezgi](https://inside.mines.edu/~ekarasoz/) that was held in Albuquerque, NM from 10/15/18 to 10/19/18. Further update of this software will be reflected upon Eric's notification.
+**MLOC** is a multiple-events hypercentroid decomposition relocation program developed and maintained by [Eric Bergman](https://www.researchgate.net/profile/Eric_Bergman2) since 1990 whose underlying idea is based on [Jordan and Sverdrup (1981)](https://pubs.geoscienceworld.org/ssa/bssa/article-abstract/71/4/1105/102070/teleseismic-location-techniques-and-their). This tutorial is a skeleton iteration based on the **MLOC** Training Workshop organized by Eric and [Ezgi](https://inside.mines.edu/~ekarasoz/) that was held in Albuquerque, NM from 10/15/18 to 10/19/18. Further update of this software will be reflected upon Eric's notification.
 
 ## Distribution
 
-Eric has never personally distributed this software community-widely but he is fine with redistributing it by those who attended his **MLOC** workshop. Therefore, I keep the track of this software under my personal private repository and impose *GPLv3* license here. Those who shared this repository shall respect it. 
+Eric has never personally distributed this software community-widely but he is fine with redistributing it by those who attended his **MLOC** workshop. Therefore, I keep the track of this software under my personal private repository and impose *GPLv3* license here. Those who share this repository shall respect it. 
 
 ## Setup
 
@@ -62,7 +62,7 @@ Then download the tables file [here](https://drive.google.com/drive/folders/15Vr
     └── tables
 ```
 
-`Docs` contains all the related references and manuals. `MNF utilities` contains functionalities for transforming ISC bulletin to `.mnf` format. `mloc utilities` contains functionalities for **MLOC** processing procedures. `mloc_gfortran` and `mloc_intel` contain `makefile` for building `mloc` program from source code listed under `mloc_src`. `mloc_working` will be your primary working directory, in which the `table` has all the geological models used by this program.
+`Docs` contains all the related references and manuals. `MNF utilities` contains functionalities for transforming ISC bulletin to `.mnf` format. `mloc utilities` contains functionalities for **MLOC** processing procedures. `mloc_gfortran` and `mloc_intel` contain `makefile` for building `mloc` program from source code listed under `mloc_src`. `mloc_working` will be your primary working directory, in which `table` has all the geological models used by this program.
 
 Compile source code and any other utilities, for example using `gfortran`:
 
@@ -91,3 +91,11 @@ Current program limits:
 
 Enter a basename for this run: 
 ```
+
+## Quick Start
+
+### 1. Download Data
+
+We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contains all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
+
+![ISC Search](https://github.com/shipengcheng1230/MLOC/RDfigures/ISC_Search.png)
