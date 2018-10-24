@@ -98,4 +98,4 @@ Enter a basename for this run:
 
 We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contains all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
 
-![ISC Search](https://github.com/shipengcheng1230/MLOC/RDfigures/ISC_Search.png)
+![ISC Search](https://github.com/shipengcheng1230/MLOC/blob/master/RDfigures/ISC_Search.png)
