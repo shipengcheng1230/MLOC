@@ -141,7 +141,7 @@ For simplicity, you will find a piece of sample data named `test.dat` in `MLOC/c
 
 ### 2. Convert to `.mnf` format
 
-Then, use the utility named `isc_ims2mnf` to obtain a `.mnf` style data:
+We will use the utility named `isc_ims2mnf` to obtain a `.mnf` style data. It is recommended to recompile them from `MLOC/MNF utilities` to suit your local library.
 
 ```console
 ➜  Data git:(master) ✗ ./isc_ims2mnf 
@@ -289,6 +289,116 @@ This file serves as a list of common commands that will be used almost everywher
 - `freh`: Free parameters for hypercentroid, the same as above.
 - `depc`: Assign a uniform depth to all the events otherwise depths information in `.mnf` file will be used instead.
 
+Relocating events using **MLOC** isn't of a single running. Instead, you need probably several or even dozens of running to obtain a much more reliable results. That is the reason we will use a command file to simplify the input of those same commands through each running. Now, copy paste those command in the beginning of `test/test1.1.cfil` under your working directory. Also copy paste utilities used for removing outliers. Again, recompile those utilities from source code first:
+
+```
+cat ../cfil\ header.txt | cat - ./test1.1.cfil > /tmp/out && mv /tmp/out ./test1.1.cfil
+cp ../Utilities/* .
+```
+
+Now sitting at your working directory and run `mloc` program:
+
+```console
+➜  mloc_working git:(master) ✗ ./mloc_g 
+
+mloc v10.4.5, release date 9/28/2018                                            
+
+Current program limits: 
+  nevmax =   200
+  nqmax  =  4000
+  ntmax1 = 35000
+
+Enter a basename for this run: 
+```
+
+First of all, let's name our first attempt as *test1.1*
+
+```console
+Enter a basename for this run: test1.1
+```
+
+Then specify the data folder relative to your working directory, which is `test`:
+
+```console
+Enter the name of the data directory: test
+
+The commands are:
+  anno
+  bdps bias bloc bptc
+  cal  ccat cfil clim comm corr cptf ctyp cvff cvou cvtt
+  datf dbug dcal dem1 dem2 dep  diff
+  ellp epap eplt even
+  fdhp flag fmap fplt frec freh
+  help hlim
+  inpu
+  kill
+  lat  lgtt lmod long lonr lres
+  mare mdou mech memb
+  nsmd
+  oldr
+  pert phid phyp plot pltt ppri pttt puke
+  radf rdpp rels revi rfil rhdf run 
+  secv shcl skip splt sstn star stat step stop subc
+  taup tfil tikh time tomo tptt tt5e tt5s ttou
+  vect vlog vscr
+  weig wind
+  xsec
+
+  For more information, follow the "help" command with a command name
+
+Enter commands:
+```
+
+Next, we will fill in the commands we previously grouped that is for reading and processing data using `cfil`:
+
+```console
+: cfil test1.1.cfil
+
+  End of command file reached, continue with interactive commands:
+```
+
+Then, we add a few more commands, for instances, turn off the reading weights and define outliers that exceeds 3 sigma and finally enter `run`:
+
+```console
+: weig off
+: lres 3.0
+: run
+```
+
+You will now see some information pops out in your terminal:
+
+```
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  FYI from mloc_main:  30 events will be relocated
+
+Station coordinates...
+  FYI from redsta: total number of stations         21118
+
+Travel time tables...
+
+Travel times spreads...
+
+Reading errors...
+
+Stations suspected of reporting bogus depth phases...
+
+Phase data for each event...
+  FYI from mlocset: event   1  19670126.1611.42  test/19670126.1611.42.mnf
+  FYI from mlocset: event   2  19720519.0113.39  test/19720519.0113.39.mnf
+  FYI from mlocset: event   3  19740929.2334.56  test/19740929.2334.56.mnf
+  FYI from mlocset: event   4  19770904.0818.24  test/19770904.0818.24.mnf
+  FYI from mlocset: event   5  19780208.1614.38  test/19780208.1614.38.mnf
+
+  ......
+```
+
+Within these contains information about how the results converged, possible one-minute error, possible outliers, etc. We will not discussed them in detail.
+You probably notice that a bunch of pdf shown in your data folder, for example, the base plot:
+
+
+
+
 ### 5. Check the results
 
 ### 6. Trim the data
@@ -323,30 +433,4 @@ To supplement your own stations, put them in
 
 ### 4. More
 
-Use the `help` command within `mloc` program to view more:
-
-```Shell
-The commands are:
-  anno
-  bdps bias bloc bptc
-  cal  ccat cfil clim comm corr cptf ctyp cvff cvou cvtt
-  datf dbug dcal dem1 dem2 dep  diff
-  ellp epap eplt even
-  fdhp flag fmap fplt frec freh
-  help hlim
-  inpu
-  kill
-  lat  lgtt lmod long lonr lres
-  mare mdou mech memb
-  nsmd
-  oldr
-  pert phid phyp plot pltt ppri pttt puke
-  radf rdpp rels revi rfil rhdf run 
-  secv shcl skip splt sstn star stat step stop subc
-  taup tfil tikh time tomo tptt tt5e tt5s ttou
-  vect vlog vscr
-  weig wind
-  xsec
-
-  For more information, follow the "help" command with or without a command name
-```
+Use the `help` command within `mloc` program to view more or refer manuals in the `MLOC/Doc`
