@@ -1,6 +1,6 @@
 # MLOC
 
-![AUR](https://img.shields.io/badge/version-v10.4.5-brightgreen.svg)
+[![AUR](https://img.shields.io/badge/version-v10.4.5-brightgreen.svg)](https://github.com/shipengcheng1230/MLOC/blob/master/mloc_src/mloc_version_history.txt)
 ![AUR](https://img.shields.io/badge/release-10%2F15%2F2018-orange.svg)
 [![AUR](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/quick-guide-gplv3.en.html)
 [![AUR](https://img.shields.io/badge/Docs-latest-48C9B0.svg)](https://github.com/shipengcheng1230/MLOC/tree/master/Docs)
@@ -137,15 +137,121 @@ Event   876000 Tunisia
 1961/01/21 03:45:25                  35.2500   10.5000                                                             uk BCIS       1901692
 ```
 
-For simplicity, you will find a piece of sample data named `test.dat` in `MLOC/clusters/Tunisia/Test/Data` that centered somewhere in Tunisia with radius of 200 km dated from 1960 to 2018. Then, use the utility named `isc_ims2mnf` to obtain a `.mnf` style data:
-
-```console
-
-```
+For simplicity, you will find a piece of sample data named `test.dat` in `MLOC/clusters/Tunisia/Test/Data` that centered somewhere in Tunisia with radius of 200 km dated from 1960 to 2018.
 
 ### 2. Convert to `.mnf` format
 
+Then, use the utility named `isc_ims2mnf` to obtain a `.mnf` style data:
+
+```console
+➜  Data git:(master) ✗ ./isc_ims2mnf 
+Release date April 6, 2018, writing MNF v1.3.3 
+
+Enter input filename: 
+test.dat
+Bulletin output?: 
+y
+Bulletin comment: 
+Tunisia test data
+EOF reached after    215 events
+```
+
+This will generate a single `.mnf` bulletin if you choose `y` for *Bulletin output?*, which looks like:
+
+```
+B   Tunisia test data                                                                                                    
+F   MNF v1.3.3                                                                                                           
+E   Tunisia                                                                                                              
+I   ISC        876000                                                                                                    
+H = 1961/01/21 03 45 25.00         35.2500   10.5000                   0.0                    BCIS                1901692
+STOP                                                                                                                     
+E   Tunisia                                                                                                              
+I   ISC        853630                                                                                                    
+H = 1965/09/05 22 06 55.58         34.1967    8.6501                  10.0                    ISC                00876034
+M   4.3  mb    ISC                                                                                               00876034
+P   ISO     10.05 353  Pn       1965  9  5 22  9 20.8   -1   0.8 Pn            .        .ISO  .  .    ISC        28078860
+P   IFR     11.48 271  Pn       1965  9  5 22  9 40.6   -1   0.9 Pn            .        .IFR  .  .    ISC        28078861
+P   WRM     15.81 352  P        1965  9  5 22 10 48.6   -1   6.6 P             .        .WRM  .  .    ISC        28078862
+P   DOU     16.17 351  P        1965  9  5 22 10 48.3   -1   2.3 P             .        .DOU  .  .    ISC        28078863
+P   EKA     22.67 342  P        1965  9  5 22 11 57.0   -1   0.1 P             .        .EKA  .  .    ISC        28078864
+P   UPP     26.34  10  P        1965  9  5 22 12 30.8   -1  -0.6 P             .        .UPP  .  .    ISC        28078865
+P   UME     30.50  10  P        1965  9  5 22 13  6.6   -1  -1.9 P             .        .UME  .  .    ISC        28078866
+P   KIR     34.36   8  P        1965  9  5 22 13 35.3   -1  -7.0 P             .        .KIR  .  .    ISC        28078867
+P   SHI     37.29  85  P        1965  9  5 22 14  9.0   -1   0.9 P             .        .SHI  .  .    ISC        28078868
+P   SCH     54.77 317  P        1965  9  5 22 16 23.9   -1  -1.4 P             .        .SCH  .  .    ISC        28078869
+P   CPO     74.07 302  P        1965  9  5 22 18 31.0   -1  -1.0 P             .        .CPO  .  .    ISC        28078870
+P   WMO     83.41 308  P        1965  9  5 22 19 23.0   -1  -0.4 P             .        .WMO  .  .    ISC        28078871
+P   UBO     86.51 318  P        1965  9  5 22 19 40.0   -1   1.0 P             .        .UBO  .  .    ISC        28078872
+P   BMO     87.30 325  P        1965  9  5 22 19 41.0   -1  -1.7 P             .        .BMO  .  .    ISC        28078873
+P   TFO     91.65 314  P        1965  9  5 22 20  5.0   -1   1.6 P             .        .TFO  .  .    ISC        28078874
+STOP                          
+```
+
+We then use `mnf_search` to refine our search, for instance removing those without much phases read:
+
+```console
+➜  Data git:(master) ✗ ./mnf_search
+Release date October 7, 2018
+
+Enter input filename: 
+test.dat.mnf
+Create a new bulletin (1) or individual event files (2)?
+2
+Create mloc command file? 
+test1.1
+Use lat-lon limits?
+n
+Use focal depth limit?
+n
+Use nearest station distance?
+n
+   215 events read
+   205 events pass the search criteria
+  80 events  that pass the search criteria and have  10 or more phase readings
+  51 events  that pass the search criteria and have  20 or more phase readings
+  41 events  that pass the search criteria and have  30 or more phase readings
+  32 events  that pass the search criteria and have  40 or more phase readings
+  30 events  that pass the search criteria and have  50 or more phase readings
+  24 events  that pass the search criteria and have  60 or more phase readings
+  21 events  that pass the search criteria and have  70 or more phase readings
+  18 events  that pass the search criteria and have  80 or more phase readings
+  15 events  that pass the search criteria and have  90 or more phase readings
+  13 events  that pass the search criteria and have 100 or more phase readings
+  11 events  that pass the search criteria and have 110 or more phase readings
+  11 events  that pass the search criteria and have 120 or more phase readings
+  11 events  that pass the search criteria and have 130 or more phase readings
+  11 events  that pass the search criteria and have 140 or more phase readings
+  10 events  that pass the search criteria and have 150 or more phase readings
+   8 events  that pass the search criteria and have 160 or more phase readings
+   7 events  that pass the search criteria and have 170 or more phase readings
+   6 events  that pass the search criteria and have 180 or more phase readings
+   6 events  that pass the search criteria and have 190 or more phase readings
+   6 events  that pass the search criteria and have 200 or more phase readings
+Minimum number of phase arrivals: 
+50
+Event number selection: beginning and end numbers: 
+1 215
+EOF reached after    215 events
+  30 events selected
+```
+
+Now we will have a list of `.mnf` file each of which contains one event with multiple observations. We will then relocate those events.
+
 ### 3. Fulfill command file
+
+Then you will have a command file named `test1.1.cfil` as you previously specified in your `mnf_search`, which looks like a bunch of repetition of:
+
+```
+memb
+even 19670126.1611.42
+inpu 19670126.1611.42.mnf
+memb
+even 19680423.2230.24
+inpu 19680423.2230.24.mnf
+memb
+```
+
+Here, `memb`, `even` and `input` together specify each of the input events with their unique names and input `.mnf` files. 
 
 ### 4. Run the program
 
