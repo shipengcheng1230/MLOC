@@ -12,7 +12,7 @@
 
 ## Distribution
 
-Eric has never personally distributed this software community-widely but he is fine with redistributing it by those who attended his **MLOC** workshop. Therefore, I keep the track of this software under my personal private repository and impose *GPLv3* license here. Those who share this repository shall respect it. 
+Eric has never personally distributed this software community-widely but he is fine with redistributing it by those who attended his **MLOC** workshop. Therefore, I keep the track of this software under my personal private repository and impose *GPLv3* license here.
 
 ## Setup
 
@@ -198,6 +198,8 @@ test.dat.mnf
 Create a new bulletin (1) or individual event files (2)?
 2
 Create mloc command file? 
+y      
+Enter command file basename: 
 test1.1
 Use lat-lon limits?
 n
@@ -235,11 +237,11 @@ EOF reached after    215 events
   30 events selected
 ```
 
-Now we will have a list of `.mnf` file each of which contains one event with multiple observations. We will then relocate those events.
+Now we will have a list of `.mnf` file each of which contains one event with at lease 50 phases identified. Those will be the events we are going to relocate.
 
 ### 3. Fulfill command file
 
-Then you will have a command file named `test1.1.cfil` as you previously specified in your `mnf_search`, which looks like a bunch of repetition of:
+You should now see a command file (all command file are ended with `.cfil`) named `test1.1.cfil` as you previously specified in your `mnf_search`, which looks like a bunch of repetition of:
 
 ```
 memb
@@ -251,9 +253,41 @@ inpu 19680423.2230.24.mnf
 memb
 ```
 
-Here, `memb`, `even` and `input` together specify each of the input events with their unique names and input `.mnf` files. 
+Here, `memb`, `even` and `input` together specify each of the input events with their unique names and input `.mnf` files, which will be used by `mloc` for obtaining phase information as well as travel time.
 
 ### 4. Run the program
+
+First of all, let's make a new folder named `test` in our primary working directory, again which is `MLOC/mloc_working`, and copy paste all the `.mnf` file as well as the command file `.cfil` there from previous data folder. Let's take a look at `cfil header.txt` which is in the working folder:
+
+```
+pltt 1 2 4 5 6 7
+dem1 globe
+bdps tables/stn/bdps.dat
+ppri pP
+ppri sP
+dcal on
+phyp off
+hlim 0. 1.0
+clim 0. 180.
+wind 3 4
+frec 1 1 0 1
+freh 1 1 0 1
+depc 16
+```
+
+This file serves as a list of common commands that will be used almost everywhere in your analysis with **MLOC**. A brief summary is as below:
+- `pltt`: Control which kind of plot will be produced
+- `dem1`: Determine which global velocity model will be used, here is *AK135*. For regions in oceans, `etopo1` is more preferential.
+- `bdps`: Provide a list of stations that are known to produce bogus phase information.
+- `ppri`: Prevent phase re-identification. **MLOC** has a number of procedures that will re-identify phases that are not reasonable w.r.t. velocity models we use.
+- `dcal`: Direction calibration. Since we have local data with numerous Pn/Pg, it is possible to do direct calibration as oppose somewhere in the middle of ocean where only tele-seismic phase are available.
+- `phyp`: P phases only for hypercentroid. For some places where S phases are prone to large reading errors, it is better to be turned on.
+- `hlim`: Distance limit (in degrees) in data used for hypercentroid
+- `clim`: Distance limit (in degrees) in data used for cluster vector (all data are used here)
+- `wind`: Determine the weight coefficient w.r.t. sigma (confidential interval)
+- `frec`: Free parameters for clusters: latitude longitude depth origin_time. It is often recommended not to do free depth relocation at first before removing outliers.
+- `freh`: Free parameters for hypercentroid, the same as above.
+- `depc`: Assign a uniform depth to all the events otherwise depths information in `.mnf` file will be used instead.
 
 ### 5. Check the results
 
