@@ -102,13 +102,14 @@ If you cannot come to this step, please pull up an issue.
 
 ## Quick Start
 
+
 ### 1. Download Data
 
 We will use [ISC bulletin](http://www.isc.ac.uk/iscbulletin/search/bulletin/) data which contain all the possible phases identified by the agency. It is also desired to use own waveform data to pick phases manually to proliferate our data coverage but we will not cover this here for now.
 
 ![ISC Search](https://github.com/shipengcheng1230/MLOC/blob/master/RDfigures/ISC_Search.png)
 
-The database contains two type: *Reviewed ISC Bulletin* and *ISC Bulletin* where the first one are those reviewed for correction. For output format we will choose *ISF Bulletin*. *QuakeML* cannot work with **MLOC** for now. Within the search region box, it falls on your own choice to draw the region you prefer. After clicking *Search bulletin*, you will be redirected towards the results page. Copy and paste all the contents and save to your local in which the file looks like:
+The database contains two type: *Reviewed ISC Bulletin* and *ISC Bulletin* where the first one are those reviewed for correction. For output format we will choose *ISF Bulletin*. *QuakeML* cannot work with **MLOC** for now. Within the search region box, it falls on your own choice to draw the region and time period you prefer. At last, check *Output phases* which we will use later and there is no need to check *Output web links*. After clicking *Search bulletin*, you will be redirected towards the results page. Copy and paste all the contents and save to your local in which the file looks like:
 
 ```
 International Seismological Centre
